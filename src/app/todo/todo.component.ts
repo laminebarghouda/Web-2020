@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 export class TodoComponent implements OnInit {
 
   todos: Todo[] = [];
+  test = '';
   constructor(private todoService: TodoService) {
     this.todos = todoService.getTodos();
   }
@@ -18,8 +19,8 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addTodo(): void{
-    this.todos = this.todoService.addTodo('Hello', 'Lamine');
+  addTodo(name: string, content: string): void{
+    this.todos = this.todoService.addTodo(name, content);
   }
 
   deleteTodo(id: number): void{

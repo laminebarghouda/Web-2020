@@ -12,23 +12,24 @@
   <div class="col-md-6">
     <form ngForm #addTodoForm="ngForm">
       <label for="name">Name</label>
-      <input ngModel type="text" id="name" minlength="4" class="form-control" placeholder="Insert name here" required #name="ngModel">
+      <input ngModel type="text" id="name" name="name" minlength="4" class="form-control" placeholder="Insert name here" required #name="ngModel">
       <div
         *ngIf="name.invalid && name.dirty"
         class="alert alert-danger"
       >
-        Name is obligatory
+        Name is obligatory and must be at least 4 characters
       </div>
       <label for="content">Content</label>
-      <input ngModel type="text" id="content" class="form-control" required placeholder="Insert content here" #content="ngModel">
+      <input ngModel type="text" id="content" name="content" class="form-control" required placeholder="Insert content here" #content="ngModel">
       <div
         *ngIf="content.invalid && content.dirty"
         class="alert alert-danger"
       >
         Content is obligatory
       </div>
-      <button class="btn btn-primary" [disabled]="addTodoForm.invalid" (click)="addTodo()">AddTodo</button>
     </form>
+    <button class="btn btn-primary" [disabled]="addTodoForm.invalid" (click)="addTodo(name.value, content.value)">AddTodo</button>
+    {{test}}
   </div>
 
 </div>
